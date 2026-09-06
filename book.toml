@@ -2,7 +2,7 @@
 authors = []
 language = "bg"
 src = "src"
-title = "Обща Теория На Правото"
+title = "ТЕОРИЯ НА ПРАВОТО"
 
 # Добавете това за промяна на темата:
 [output.html]
