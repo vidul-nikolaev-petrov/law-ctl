@@ -1,0 +1,12 @@
+[book]
+authors = []
+language = "bg"
+src = "src"
+title = "Обща Теория На Правото"
+
+# Добавете това за промяна на темата:
+[output.html]
+default-theme = "coal" # Може да бъде: light, rust, coal, navy, ayu
+preferred-dark-theme = "navy"
+additional-css = ["src/custom.css"]
+
