@@ -15,6 +15,14 @@
         <meta charset="UTF-8">
         <meta name="robots" content="noindex">
         <!-- Custom HTML head -->
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const search = document.getElementById("searchbar");
+            if (search) {
+                search.placeholder = "Търси в книгата...";
+            }
+        });
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
         <link rel="stylesheet" href="css/variables.css">

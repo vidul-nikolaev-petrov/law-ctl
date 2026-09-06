@@ -8,6 +8,14 @@
 
 
         <!-- Custom HTML head -->
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const search = document.getElementById("searchbar");
+            if (search) {
+                search.placeholder = "Търси в книгата...";
+            }
+        });
+        </script>
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
