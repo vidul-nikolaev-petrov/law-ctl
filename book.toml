@@ -9,3 +9,6 @@ title = "ТЕОРИЯ НА ПРАВОТО"
 default-theme = "coal" # Може да бъде: light, rust, coal, navy, ayu
 preferred-dark-theme = "navy"
 additional-css = ["src/custom.css", "theme/custom.css"]
+
+[output.html.search]
+enable = true

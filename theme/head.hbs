@@ -1,8 +1,33 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    const search = document.getElementById("searchbar");
-    if (search) {
-        search.placeholder = "Търси в книгата...";
-    }
+  const search = document.getElementById("searchbar");
+  
+  if (search) {
+    search.placeholder = "Търси в книгата...";
+  }
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function translateSearchResults() {
+        document.querySelectorAll("#searchresults-header, #searchresults-header *").forEach(function (el) {
+            const strEn = "No search results for";
+            const strBg = "Няма намерени резултати за";
+            
+            if (el.children.length === 0 &&
+                el.textContent.includes(strEn)) {
+                el.textContent = el.textContent.replace(strEn, strBg);
+            }
+        });
+    }
+
+    const observer = new MutationObserver(translateSearchResults);
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+});
+</script>
+

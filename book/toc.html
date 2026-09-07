@@ -17,12 +17,37 @@
         <!-- Custom HTML head -->
         <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const search = document.getElementById("searchbar");
-            if (search) {
-                search.placeholder = "Търси в книгата...";
-            }
+          const search = document.getElementById("searchbar");
+          
+          if (search) {
+            search.placeholder = "Търси в книгата...";
+          }
         });
         </script>
+        
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function translateSearchResults() {
+                document.querySelectorAll("#searchresults-header, #searchresults-header *").forEach(function (el) {
+                    const strEn = "No search results for";
+                    const strBg = "Няма намерени резултати за";
+                    
+                    if (el.children.length === 0 &&
+                        el.textContent.includes(strEn)) {
+                        el.textContent = el.textContent.replace(strEn, strBg);
+                    }
+                });
+            }
+        
+            const observer = new MutationObserver(translateSearchResults);
+        
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+        </script>
+        
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
         <link rel="stylesheet" href="css/variables.css">
@@ -37,6 +62,6 @@
         <link rel="stylesheet" href="theme/custom.css">
     </head>
     <body class="sidebar-iframe-inner">
-        <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html" target="_parent">Увод</a></li><li class="chapter-item expanded "><a href="part_1.html" target="_parent"><strong aria-hidden="true">1.</strong> Първа част</a></li><li class="chapter-item expanded "><a href="part_2.html" target="_parent"><strong aria-hidden="true">2.</strong> Втора част</a></li><li class="chapter-item expanded affix "><a href="terms.html" target="_parent">Индекс</a></li></ol>
+        <ol class="chapter"><li class="chapter-item expanded affix "><a href="intro.html" target="_parent">Увод</a></li><li class="chapter-item expanded "><a href="legal_norm.html" target="_parent"><strong aria-hidden="true">1.</strong> Правна Норма</a></li><li class="chapter-item expanded "><a href="part_2.html" target="_parent"><strong aria-hidden="true">2.</strong> Втора част</a></li><li class="chapter-item expanded affix "><a href="terms.html" target="_parent">Индекс</a></li></ol>
     </body>
 </html>
