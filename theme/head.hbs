@@ -32,6 +32,21 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const title = document.querySelector('.menu-title');
+
+    if (title) {
+        const link = document.createElement('a');
+        link.href = path_to_root + 'intro.html';
+        link.textContent = title.textContent;
+
+        title.textContent = '';
+        title.appendChild(link);
+    }
+});
+</script>
+
+<script>
 (function () {
     function patch() {
         if (!window.elasticlunr || !window.elasticlunr.Index) {

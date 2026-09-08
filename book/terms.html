@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="bg" class="coal sidebar-visible" dir="ltr">
+<html lang="bg" class="rust sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -37,6 +37,21 @@
                 childList: true,
                 subtree: true
             });
+        });
+        </script>
+        
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const title = document.querySelector('.menu-title');
+        
+            if (title) {
+                const link = document.createElement('a');
+                link.href = path_to_root + 'intro.html';
+                link.textContent = title.textContent;
+        
+                title.textContent = '';
+                title.appendChild(link);
+            }
         });
         </script>
         
@@ -127,15 +142,15 @@
         <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="src/custom-00214282.css">
+        <link rel="stylesheet" href="src/custom-724e8fea.css">
         <link rel="stylesheet" href="theme/custom-39bc268c.css">
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
-            const default_light_theme = "coal";
-            const default_dark_theme = "navy";
+            const default_light_theme = "rust";
+            const default_dark_theme = "rust";
             window.path_to_searchindex_js = "searchindex-37550988.js";
         </script>
         <!-- Start loading toc.js asap -->
@@ -177,7 +192,7 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             const html = document.documentElement;
-            html.classList.remove('coal')
+            html.classList.remove('rust')
             html.classList.add(theme);
             html.classList.add("js");
         </script>

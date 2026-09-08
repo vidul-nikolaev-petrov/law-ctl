@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="bg" class="coal" dir="ltr">
+<html lang="bg" class="rust" dir="ltr">
     <head>
         <!-- sidebar iframe generated using mdBook
 
@@ -45,6 +45,21 @@
                 childList: true,
                 subtree: true
             });
+        });
+        </script>
+        
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const title = document.querySelector('.menu-title');
+        
+            if (title) {
+                const link = document.createElement('a');
+                link.href = path_to_root + 'intro.html';
+                link.textContent = title.textContent;
+        
+                title.textContent = '';
+                title.appendChild(link);
+            }
         });
         </script>
         
@@ -123,7 +138,7 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="src/custom-00214282.css">
+        <link rel="stylesheet" href="src/custom-724e8fea.css">
         <link rel="stylesheet" href="theme/custom-39bc268c.css">
     </head>
     <body class="sidebar-iframe-inner">

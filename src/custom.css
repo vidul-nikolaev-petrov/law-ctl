@@ -1,4 +1,9 @@
 /* Центрира главното заглавие на страницата */
 #content main h1 {
-    text-align: center;
+/*   text-align: center; */
+}
+
+.menu-title a {
+    color: inherit;
+    text-decoration: none;
 }

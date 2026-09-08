@@ -6,8 +6,8 @@ language = "bg"
 
 # Добавете това за промяна на темата:
 [output.html]
-default-theme = "coal" # Може да бъде: light, rust, coal, navy, ayu
-preferred-dark-theme = "navy"
+default-theme = "rust" # Може да бъде: light, rust, coal, navy, ayu
+preferred-dark-theme = "rust"
 additional-css = ["src/custom.css", "theme/custom.css"]
 
 [output.html.search]
