@@ -8,7 +8,7 @@ class MDBookSidebarScrollbox extends HTMLElement {
         super();
     }
     connectedCallback() {
-        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="intro.html">Увод</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="legal_norm.html"><strong aria-hidden="true">1.</strong> Правна Норма</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="part_2.html"><strong aria-hidden="true">2.</strong> Втора част</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="terms.html">Индекс</a></span></li></ol>';
+        this.innerHTML = '<ol class="chapter"><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="intro.html">Увод</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="legal_norm.html"><strong aria-hidden="true">1.</strong> Правна Норма</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="legal_fact.html"><strong aria-hidden="true">2.</strong> Правен Факт</a></span></li><li class="chapter-item expanded "><span class="chapter-link-wrapper"><a href="terms.html">Индекс</a></span></li></ol>';
         // Set the current, active page, and reveal it if it's hidden
         let current_page = document.location.href.toString().split('#')[0].split('?')[0];
         if (current_page.endsWith('/')) {

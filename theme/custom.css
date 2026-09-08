@@ -1,6 +1,6 @@
 /* Increase the max width of the main content container */
 .content main {
-    max-width: 1000px; /* Default is 750px; adjust higher or lower as needed */
+    max-width: 888px; /* Default is 750px; adjust higher or lower as needed */
 }
 
 /* Optional: Allow code blocks to expand alongside the main text */
