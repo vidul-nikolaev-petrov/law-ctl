@@ -1,8 +1,8 @@
 [book]
-authors = []
-language = "bg"
+authors = ["Видул Петров"]
 src = "src"
 title = "ТЕОРИЯ НА ПРАВОТО"
+language = "bg"
 
 # Добавете това за промяна на темата:
 [output.html]
@@ -12,3 +12,4 @@ additional-css = ["src/custom.css", "theme/custom.css"]
 
 [output.html.search]
 enable = true
+# logical-word-separator = "[\\s,\\.:;!?()\"'-]+"

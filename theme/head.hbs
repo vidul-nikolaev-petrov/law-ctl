@@ -31,3 +31,69 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script>
+(function () {
+    function patch() {
+        if (!window.elasticlunr || !window.elasticlunr.Index) {
+            setTimeout(patch, 50);
+            return;
+        }
+
+        const proto = window.elasticlunr.Index.prototype;
+        if (proto.__bgSearchPatched) return;
+
+        const originalSearch = proto.search;
+
+        proto.search = function (query, options) {
+            // Use normal mdBook/Elasticlunr search for non-Cyrillic queries.
+            if (!/[А-Яа-яЁё]/.test(query)) {
+                return originalSearch.call(this, query, options);
+            }
+
+            const docs = this.documentStore && this.documentStore.docs;
+            if (!docs) {
+                return originalSearch.call(this, query, options);
+            }
+
+            const terms = query
+                .toLocaleLowerCase('bg-BG')
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean);
+
+            const fields = ['title', 'body', 'breadcrumbs'];
+            const results = [];
+
+            Object.keys(docs).forEach(function (id) {
+                const doc = docs[id];
+
+                const text = fields
+                    .map(function (field) {
+                        return doc[field] || '';
+                    })
+                    .join(' ')
+                    .toLocaleLowerCase('bg-BG');
+
+                // AND: every searched Bulgarian word must occur.
+                if (terms.every(function (term) {
+                    return text.indexOf(term) !== -1;
+                })) {
+                    results.push({
+                        ref: id,
+                        score: terms.reduce(function (score, term) {
+                            return score + (text.indexOf(term) !== -1 ? 1 : 0);
+                        }, 0),
+                        doc: doc
+                    });
+                }
+            });
+
+            return results;
+        };
+
+        proto.__bgSearchPatched = true;
+    }
+
+    patch();
+})();
+</script>
