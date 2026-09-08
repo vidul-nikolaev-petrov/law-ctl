@@ -8,7 +8,7 @@ language = "bg"
 [output.html]
 default-theme = "rust" # Може да бъде: light, rust, coal, navy, ayu
 preferred-dark-theme = "rust"
-additional-css = ["src/custom.css", "theme/custom.css"]
+additional-css = ["theme/custom.css"]
 
 [output.html.search]
 enable = true

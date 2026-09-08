@@ -1,17 +1,23 @@
+/* Keep the title's style */
+.menu-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
 /* Increase the max width of the main content container */
 .content main {
-    max-width: 888px; /* Default is 750px; adjust higher or lower as needed */
+  max-width: 888px; /* Default is 750px; adjust higher or lower as needed */
 }
 
 /* Optional: Allow code blocks to expand alongside the main text */
 .content main blockquote,
 .content main pre {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 /* Justify main body text */
 .content main {
-    text-align: justify;
+  text-align: justify;
 }
 
 /* Decrease the main page title (H1) */
@@ -26,6 +32,16 @@
 
 .content main h3 {
   font-size: 1.2rem;
+}
+
+.author {
+  font-weight: bold;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  font-size: 110%;
+  opacity: 0.75;
+  text-align: right;
+  margin-top: -20px;
+  margin-bottom: 80px;
 }
 
 /* Optional: Apply these smaller sizes ONLY on mobile screens */
