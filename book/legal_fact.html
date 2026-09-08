@@ -20,15 +20,28 @@
         <script>
         document.addEventListener("DOMContentLoaded", function () {
             function translateSearchResults() {
-                document.querySelectorAll("#searchresults-header, #searchresults-header *").forEach(function (el) {
-                    const strEn = "No search results for";
-                    const strBg = "Няма намерени резултати за";
-                    
-                    if (el.children.length === 0 &&
-                        el.textContent.includes(strEn)) {
-                        el.textContent = el.textContent.replace(strEn, strBg);
-                    }
-                });
+                const el = document.querySelector("#mdbook-searchresults-header");
+                const engNoR = "No search results for";
+                const engOneR = "1 search result for";
+        
+                if (el.textContent.startsWith(engNoR)) {
+                    el.textContent = el.textContent.replace(
+                        engNoR, "Няма намерени резултати за"
+                    );
+                }
+        
+                else if (el.textContent.startsWith(engOneR)) {
+                    el.textContent = el.textContent.replace(
+                        engOneR, "Намерен е един резултат за"
+                    );
+                }
+        
+                else if (/^\d+ search results/.test(el.textContent)) {
+                    el.textContent = el.textContent.replace(
+                        /^(\d+) search results for/,
+                        "Намерени са $1 резултата за"
+                    );
+                }
             }
         
             const observer = new MutationObserver(translateSearchResults);

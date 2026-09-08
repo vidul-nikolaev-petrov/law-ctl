@@ -21,15 +21,28 @@
         <script>
         document.addEventListener("DOMContentLoaded", function () {
             function translateSearchResults() {
-                document.querySelectorAll("#searchresults-header, #searchresults-header *").forEach(function (el) {
-                    const strEn = "No search results for";
-                    const strBg = "Няма намерени резултати за";
-                    
-                    if (el.children.length === 0 &&
-                        el.textContent.includes(strEn)) {
-                        el.textContent = el.textContent.replace(strEn, strBg);
-                    }
-                });
+                const el = document.querySelector("#mdbook-searchresults-header");
+                const engNoR = "No search results for";
+                const engOneR = "1 search result for";
+        
+                if (el.textContent.startsWith(engNoR)) {
+                    el.textContent = el.textContent.replace(
+                        engNoR, "Няма намерени резултати за"
+                    );
+                }
+        
+                else if (el.textContent.startsWith(engOneR)) {
+                    el.textContent = el.textContent.replace(
+                        engOneR, "Намерен е един резултат за"
+                    );
+                }
+        
+                else if (/^\d+ search results/.test(el.textContent)) {
+                    el.textContent = el.textContent.replace(
+                        /^(\d+) search results for/,
+                        "Намерени са $1 резултата за"
+                    );
+                }
             }
         
             const observer = new MutationObserver(translateSearchResults);
@@ -296,8 +309,8 @@
 <ul>
 <li><strong>Същност на правото</strong>
 <ul>
-<li>Естествено право: правото се основава на универсални морални принципи, разум или човешка природа.</li>
-<li>Правен позитивизъм: правото е сбор от норми, създадени и санкционирани от държавната власт, независимо от морала.</li>
+<li><em>Естествено право</em>: правото се основава на универсални морални принципи, разум или човешка природа.</li>
+<li><em>Правен позитивизъм</em>: правото е сбор от норми, създадени и санкционирани от държавната власт, независимо от морала.</li>
 </ul>
 </li>
 <li><strong>Правна норма</strong>: oсновната градивна единица на правото. Тя представлява общозадължително правило за поведение, подкрепено от държавна принуда.</li>
