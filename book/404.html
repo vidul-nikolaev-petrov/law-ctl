@@ -20,6 +20,13 @@
         
         <script>
         document.addEventListener("DOMContentLoaded", function () {
+            const observer = new MutationObserver(translateSearchResults);
+        
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+           
             function translateSearchResults() {
                 const el = document.querySelector("#mdbook-searchresults-header");
                 const engNoR = "No search results for";
@@ -44,13 +51,43 @@
                     );
                 }
             }
+        });
+        </script>
         
-            const observer = new MutationObserver(translateSearchResults);
+        <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const links = [...document.querySelectorAll("a")];
         
-            observer.observe(document.body, {
-                childList: true,
-                subtree: true
-            });
+            const pages = [...new Set(
+                links
+                    .map(a => a.href)
+                    .filter(url =>
+                        url.startsWith(location.origin) &&
+                        url.endsWith(".html")
+                    )
+            )];
+        
+            const prefetched = JSON.parse(
+                sessionStorage.getItem("prefetchedPages") || "[]"
+            );
+        
+            const done = new Set(prefetched);
+        
+            const missing = pages.filter(url => !done.has(url));
+        
+            await Promise.all(
+                missing.map(async url => {
+                    await fetch(url, {
+                        credentials: "same-origin"
+                    });
+                    done.add(url);
+                })
+            );
+        
+            sessionStorage.setItem(
+                "prefetchedPages",
+                JSON.stringify([...done])
+            );
         });
         </script>
         
