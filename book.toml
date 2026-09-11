@@ -1,5 +1,5 @@
 [book]
-title = "ТЕОРИЯ НА ПРАВОТО"
+title = "ОБЩА ТЕОРИЯ НА ПРАВОТО"
 authors = ["Видул Петров"]
 language = "bg"
 
@@ -7,7 +7,7 @@ language = "bg"
 [output.html]
 default-theme = "rust" # Може да бъде: light, rust, coal, navy, ayu
 preferred-dark-theme = "rust"
-additional-css = ["theme/custom.css"]
+additional-css = ["theme/css/custom.css"]
 
 [output.html.search]
 enable = true
